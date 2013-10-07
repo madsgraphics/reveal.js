@@ -1,0 +1,195 @@
+/**
+ * MAD's Graphics theme
+ *
+ * Based on Default theme for reveal.js.
+ * Initial licence: Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+
+// DEFAULTS --------------------------------------------------------------------
+@import "../template/mixins";
+@import "../template/settings";
+
+// FONTS -----------------------------------------------------------------------
+// Include theme-specific fonts
+@font-face {
+	font-family: 'bebas_neueregular';
+	src: url('../../lib/font/BebasNeue-webfont.eot');
+	src: url('../../lib/font/BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../../lib/font/BebasNeue-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'dejavu_sansbook';
+	src: url('../../lib/font/DejaVuSans-webfont.eot');
+	src: url('../../lib/font/DejaVuSans-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../../lib/font/DejaVuSans-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'roboto_condensed_bold';
+	src: url('../../lib/font/RobotoCondensed-Bold-webfont.eot');
+	src: url('../../lib/font/RobotoCondensed-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../../lib/font/RobotoCondensed-Bold-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'source_code_pro';
+	src: url('../../lib/font/sourcecodepro-regular-webfont.eot');
+	src: url('../../lib/font/sourcecodepro-regular-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../../lib/font/sourcecodepro-regular-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+// CUSTOM PARTS ----------------------------------------------------------------
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: rgb(246,246,246);
+@mixin bodyBackground() {
+	@include vertical-gradient( $backgroundColor, darken($backgroundColor, 10%) );
+}
+
+$highlightColor: rgb(0,108,140);
+$enforceColor: rgb(164,8,0);
+
+$mainColor: rgb(69,72,73);
+$mainFont: 'bebas_neueregular', sans-serif;
+$mainFontSize: 56px;
+
+$headingColor: $mainColor;
+$headingFont: 'bebas_neueregular', sans-serif;
+$headingTextShadow: 0 0 3px rgba(69,72,73,0.2);
+$heading1TextShadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 20px 20px rgba(0,0,0,.15);
+
+$linkColor: $highlightColor;
+$linkColorHover: lighten( $linkColor, 20% );
+
+.reveal {
+	.progress {
+		top: 0;
+	}
+
+	a:not(.image) {
+		&.normal {
+			color: $mainColor;
+
+			&:hover,
+			&:focus {
+				color: $highlightColor;
+			}
+		}
+
+		&.und {
+			text-decoration: underline;
+		}
+	}
+
+	.breadcrumb,
+	.legend {
+		font-size: 0.66em;
+		font-family: 'roboto_condensed_bold', sans-serif;
+		color: lighten( $mainColor, 45% );
+		text-transform: uppercase;
+	}
+
+	.breadcrumb {
+		text-align: left;
+		padding-bottom: 2em;
+	}
+
+	.legend {
+		text-align: right;
+		padding-top: 2em;
+	}
+
+	h2.inst {
+		font-size: 3.35em;
+		text-align: left;
+	}
+
+	em,
+	.hlt {
+		color: $highlightColor;
+	}
+
+	strong,
+	.lettrine {
+		color: $enforceColor;
+	}
+
+	sup {
+		font-size: 0.5em;
+	}
+
+	a::after {
+		content: "☚";
+		font-family: 'dejavu_sansbook';
+		display: inline-block;
+		position: relative;
+		top: -0.1em;
+		left: 0.3em;
+	}
+
+	span.creator a::after {
+		display: none;
+	}
+
+	pre {
+		background-color: $mainColor;
+
+		code {
+			font-size: 0.55em;
+			line-height: 1.5em;
+			font-family: "source_code_pro", monospace;
+			max-height: 600px;
+			background-color: transparent;
+		}
+	}
+
+	section[data-background="#454849"] {
+		.breadcrumb,
+		.legend {
+			color: lighten( $mainColor, 10% );
+		}
+
+		p {
+			color: lighten( $mainColor, 45% );
+		}
+
+		pre {
+			box-shadow: none;
+		}
+	}
+
+	section.bgi {
+		background-color: rgba(255,255,255,0.55);
+		box-shadow: 0px 0px 10px rgba(0,0,0,0.55);
+	}
+
+	#credits {
+		font-size: 0.55em;
+		line-height: 1em;
+		text-transform: none;
+
+		dt {
+			padding: 0.55em 0;
+		}
+
+		li {
+			padding-bottom: 0.75em;
+		}
+
+		.creator {
+			font-family: 'dejavu_sansbook', sans-serif;
+			font-size: 0.65em;
+		}
+	}
+}
+
+// THEME BUILDER ---------------------------------------------------------------
+@import "../template/theme";
