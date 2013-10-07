@@ -47,7 +47,7 @@
 	font-style: normal;
 }
 
-// CUSTOM PARTS ----------------------------------------------------------------
+// SETTINGS --------------------------------------------------------------------
 // Override theme settings (see ../template/settings.scss)
 $backgroundColor: rgb(246,246,246);
 @mixin bodyBackground() {
@@ -69,6 +69,10 @@ $heading1TextShadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b
 $linkColor: $highlightColor;
 $linkColorHover: lighten( $linkColor, 20% );
 
+// THEME BUILDER ---------------------------------------------------------------
+@import "../template/theme";
+
+// CUSTOM ----------------------------------------------------------------------
 .reveal {
 	.progress {
 		top: 0;
@@ -151,6 +155,19 @@ $linkColorHover: lighten( $linkColor, 20% );
 		}
 	}
 
+	section {
+		img {
+			border: none;
+			box-shadow: none;
+
+			&.stamp {
+				border: 10px solid $backgroundColor;
+				border-radius: 50%;
+				box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+			}
+		}
+	}
+
 	section[data-background="#454849"] {
 		.breadcrumb,
 		.legend {
@@ -190,6 +207,3 @@ $linkColorHover: lighten( $linkColor, 20% );
 		}
 	}
 }
-
-// THEME BUILDER ---------------------------------------------------------------
-@import "../template/theme";
