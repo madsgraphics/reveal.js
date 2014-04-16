@@ -13,36 +13,36 @@
 // Include theme-specific fonts
 @font-face {
 	font-family: 'bebas_neueregular';
-	src: url('../../lib/font/BebasNeue-webfont.eot');
-	src: url('../../lib/font/BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('../../lib/font/BebasNeue-webfont.woff') format('woff');
+	src: url('/fonts/BebasNeue-webfont.eot');
+	src: url('/fonts/BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('/fonts/BebasNeue-webfont.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'dejavu_sansbook';
-	src: url('../../lib/font/DejaVuSans-webfont.eot');
-	src: url('../../lib/font/DejaVuSans-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('../../lib/font/DejaVuSans-webfont.woff') format('woff');
+	src: url('/fonts/DejaVuSans-webfont.eot');
+	src: url('/fonts/DejaVuSans-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('/fonts/DejaVuSans-webfont.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'roboto_condensed_bold';
-	src: url('../../lib/font/RobotoCondensed-Bold-webfont.eot');
-	src: url('../../lib/font/RobotoCondensed-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('../../lib/font/RobotoCondensed-Bold-webfont.woff') format('woff');
+	src: url('/fonts/RobotoCondensed-Bold-webfont.eot');
+	src: url('/fonts/RobotoCondensed-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('/fonts/RobotoCondensed-Bold-webfont.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'source_code_pro';
-	src: url('../../lib/font/sourcecodepro-regular-webfont.eot');
-	src: url('../../lib/font/sourcecodepro-regular-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('../../lib/font/sourcecodepro-regular-webfont.woff') format('woff');
+	src: url('/fonts/sourcecodepro-regular-webfont.eot');
+	src: url('/fonts/sourcecodepro-regular-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('/fonts/sourcecodepro-regular-webfont.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -111,19 +111,26 @@ $linkColorHover: lighten( $linkColor, 20% );
 		padding-top: 2em;
 	}
 
-	h2.inst {
+	section[data-background] h2 {
+		color: $backgroundColor;
+		text-shadow: 0 0 0.3em rgba(69,72,73,0.85);
+	}
+
+	h2.large {
 		font-size: 3.35em;
 		text-align: left;
 	}
 
 	em,
-	.hlt {
+	.em {
 		color: $highlightColor;
+		font-style: normal;
 	}
 
 	strong,
-	.lettrine {
+	.strong {
 		color: $enforceColor;
+		font-weight: normal;
 	}
 
 	sup {
@@ -144,7 +151,7 @@ $linkColorHover: lighten( $linkColor, 20% );
 	}
 
 	pre {
-		background-color: $mainColor;
+		background-color: $backgroundColor;
 
 		code {
 			font-size: 0.55em;
@@ -177,15 +184,109 @@ $linkColorHover: lighten( $linkColor, 20% );
 		p {
 			color: lighten( $mainColor, 45% );
 		}
-
-		pre {
-			box-shadow: none;
-		}
 	}
 
-	section.bgi {
+	section.group {
 		background-color: rgba(255,255,255,0.55);
 		box-shadow: 0px 0px 10px rgba(0,0,0,0.55);
+	}
+
+	blockquote::before {
+		display: block;
+		content: "“";
+		position: absolute;
+		top: 60px;
+		left: -120px;
+		font-size: 300px;
+		font-family: "source_code_pro", monospace;
+		opacity: 0.2;
+	}
+
+	#mad {
+		.wrapper,
+		.wrapper > div,
+		img {
+			-webkit-transition: all .45s ease;
+			   -moz-transition: all .45s ease;
+			    -ms-transition: all .45s ease;
+			     -o-transition: all .45s ease;
+			        transition: all .45s ease;
+		}
+
+		.wrapper {
+			position: relative;
+			width: 100%;
+
+			& > div {
+				float: none;
+				position: absolute;
+				width: 100%;
+				top: 0;
+				left: 0;
+			}
+		}
+
+		&.skills {
+			#coord {
+				opacity: 0;
+			}
+			#skills {
+				opacity: 1;
+			}
+		}
+
+		&.skills.clever {
+			#skills {
+				opacity: 0;
+			}
+		}
+
+		#stamp {
+			position: relative;
+			height: 350px;
+
+			img {
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 50%;
+				margin-left: -150px;
+				@include bodyBackground();
+				-webkit-backface-visibility: hidden;
+				   -moz-backface-visibility: hidden;
+				    -ms-backface-visibility: hidden;
+				     -o-backface-visibility: hidden;
+				        backface-visibility: hidden;
+			}
+
+			.fragment {
+				opacity: 1;
+				-webkit-transform: rotateY(180deg);
+				   -moz-transform: rotateY(180deg);
+				    -ms-transform: rotateY(180deg);
+				     -o-transform: rotateY(180deg);
+				        transform: rotateY(180deg);
+			}
+		}
+
+		&.clever {
+			#stamp {
+				img {
+					-webkit-transform: rotateY(-180deg);
+					   -moz-transform: rotateY(-180deg);
+					    -ms-transform: rotateY(-180deg);
+					     -o-transform: rotateY(-180deg);
+					        transform: rotateY(-180deg);
+				}
+				.fragment {
+					-webkit-transform: rotateY(0deg);
+					   -moz-transform: rotateY(0deg);
+					    -ms-transform: rotateY(0deg);
+					     -o-transform: rotateY(0deg);
+					        transform: rotateY(0deg);
+				}
+			}
+		}
 	}
 
 	#credits {
